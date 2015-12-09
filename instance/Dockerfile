@@ -1,4 +1,4 @@
-FROM eeacms/plone-eea-common-relstorage
+FROM eeacms/plone-eea-common
 MAINTAINER "Alin Voinea" <alin.voinea@eaudeweb.ro>
 
 COPY src/sources.cfg                  $ZOPE_HOME/
@@ -25,10 +25,15 @@ ENV TRACEVIEW_SAMPLE_RATE             1.0
 ENV TRACEVIEW_DETAILED_PARTITION      1
 ENV TRACEVIEW_TRACING_MODE            always
 
-VOLUME                                /data/blobs
-VOLUME                                /data/www-static-resources
-VOLUME                                /data/downloads/pdf
-VOLUME                                /data/downloads/tmp
-VOLUME                                /data/eea.controlpanel
+VOLUME                                /data
+
+RUN \
+  mkdir -p \
+     /data/blobs \
+     /data/www-static-resources \
+     /data/downloads/pdf \
+     /data/downloads/tmp \
+     /data/eea.controlpanel &&
+  chown -R 500:500 /data
 
 RUN ./install.sh
