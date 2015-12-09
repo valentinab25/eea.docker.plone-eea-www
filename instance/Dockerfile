@@ -33,7 +33,7 @@ RUN \
      /data/www-static-resources \
      /data/downloads/pdf \
      /data/downloads/tmp \
-     /data/eea.controlpanel &&
+     /data/eea.controlpanel && \
   chown -R 500:500 /data
 
 RUN ./install.sh
