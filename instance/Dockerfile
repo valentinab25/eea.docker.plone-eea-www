@@ -7,7 +7,7 @@ COPY src/base.cfg                     $ZOPE_HOME/
 
 ENV PLONE_APP_ASYNC                   multi_db_instance
 
-ENV zope_i18n_compile_mo_files        true
+ENV zope_i18n_compile_mo_files        false
 ENV portal_url                        http://www.eea.europa.eu
 ENV AOA_MAP_TILES                     http://aoa.ew.eea.europa.eu/maptiles/
 ENV AOA_PORTAL_URL                    http://aoa.ew.eea.europa.eu/
