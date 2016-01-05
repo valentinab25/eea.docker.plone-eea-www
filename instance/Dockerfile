@@ -27,6 +27,8 @@ ENV TRACEVIEW_TRACING_MODE            always
 
 VOLUME                                /data
 
+USER root
+
 RUN \
   mkdir -p \
      /data/blobs \
@@ -37,3 +39,5 @@ RUN \
   chown -R 500:500 /data
 
 RUN ./install.sh
+
+USER zope-www
