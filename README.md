@@ -1,1 +1,1 @@
-instance/README.md
+deploy/README.md
