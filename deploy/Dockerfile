@@ -12,7 +12,7 @@ ENV portal_url                        http://www.eea.europa.eu
 ENV AOA_MAP_TILES                     http://aoa.ew.eea.europa.eu/maptiles/
 ENV AOA_PORTAL_URL                    http://aoa.ew.eea.europa.eu/
 ENV MEMCACHE_SERVER                   memcached:11211
-ENV WKHTMLTOPDF_PATH                  xvfb-run -a wkhtmltopdf
+ENV WKHTMLTOPDF_PATH                  wkhtmltopdf
 
 ENV EEADOWNLOADS_NAME                 downloads
 ENV EEADOWNLOADS_PATH                 /data/downloads/pdf
