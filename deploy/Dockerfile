@@ -38,6 +38,8 @@ RUN \
      /data/eea.controlpanel && \
   chown -R 500:500 /data
 
+COPY . /opt/app
+RUN install-dependencies /opt/app
 RUN ./install.sh
 
 USER zope-www
