@@ -40,6 +40,7 @@ RUN \
 
 COPY . /opt/app
 RUN install-dependencies /opt/app
+RUN rm -rf parts/instance
 RUN ./install.sh
 
 USER zope-www
