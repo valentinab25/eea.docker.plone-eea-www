@@ -4,5 +4,6 @@ MAINTAINER "Alin Voinea" <alin.voinea@eaudeweb.ro>
 COPY src/base.cfg $ZOPE_HOME/
 
 USER root
+RUN rm -rf $ZOPE_HOME/parts
 RUN ./install.sh
 USER zope-www
