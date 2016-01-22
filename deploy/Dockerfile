@@ -25,8 +25,6 @@ ENV TRACEVIEW_SAMPLE_RATE             1.0
 ENV TRACEVIEW_DETAILED_PARTITION      1
 ENV TRACEVIEW_TRACING_MODE            always
 
-VOLUME                                /data
-
 USER root
 
 RUN \
@@ -40,7 +38,7 @@ RUN \
 
 COPY . /opt/app
 RUN install-dependencies /opt/app
-RUN rm -rf $ZOPE_HOME/parts
+RUN rm -vrf $ZOPE_HOME/parts/*
 RUN ./install.sh
 
 USER zope-www
