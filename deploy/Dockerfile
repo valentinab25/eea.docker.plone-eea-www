@@ -38,7 +38,7 @@ RUN \
 
 COPY . /opt/app
 RUN install-dependencies /opt/app
-RUN rm -vrf $ZOPE_HOME/parts/*
 RUN ./install.sh
-
+RUN find . -name "*single_db_instance-configure.zcml" -exec rm -f {} \;
+RUN find . -name "*db_worker-configure.zcml" -exec rm -f {} \;
 USER zope-www

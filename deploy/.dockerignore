@@ -1,0 +1,4 @@
+Dockerfile
+*.cfg
+*.md
+.dockerignore
