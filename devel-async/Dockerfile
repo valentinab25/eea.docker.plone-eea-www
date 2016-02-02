@@ -1,4 +1,4 @@
-FROM eeacms/plone-eea-www:devel
+FROM eeacms/plone-eea-www-devel
 MAINTAINER "Alin Voinea" <alin.voinea@eaudeweb.ro>
 
 ENV PLONE_APP_ASYNC multi_db_worker
