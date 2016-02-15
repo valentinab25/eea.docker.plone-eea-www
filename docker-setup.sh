@@ -32,6 +32,7 @@ echo "========================================================================="
 echo "Cleaning up cache..."
 echo "========================================================================="
 
+find . -name "*eea.plonebuildout.profile*.zcml" -exec rm -vf {} \;
 rm -vrf /var/lib/apt/lists/*
 rm -vrf /plone/buildout-cache/downloads/*
 
