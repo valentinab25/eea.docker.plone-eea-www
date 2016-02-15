@@ -1,11 +1,9 @@
-FROM eeacms/plone-eea-www
+FROM eeacms/www
 MAINTAINER "Alin Voinea" <alin.voinea@eaudeweb.ro>
 
-COPY src/base.cfg $ZOPE_HOME/
-
 USER root
-RUN ./install.sh
-RUN find . -name "*single_db_instance-configure.zcml" -exec rm -f {} \;
-RUN find . -name "*db_worker-configure.zcml" -exec rm -f {} \;
-RUN find . -name "*eea.plonebuildout.profile*.zcml" -exec rm -f {} \;
-USER zope-www
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends build-essential
+USER plone
+
+RUN buildout -c devel.cfg
