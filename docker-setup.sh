@@ -34,7 +34,6 @@ echo "========================================================================="
 
 rm -vrf /var/lib/apt/lists/*
 rm -vrf /plone/buildout-cache/downloads/*
-find /plone -name *eea.plonebuildout.profile* | xargs rm -vrf
 
 echo "========================================================================="
 echo "Fixing permissions..."
