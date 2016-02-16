@@ -32,9 +32,9 @@ echo "========================================================================="
 echo "Cleaning up cache..."
 echo "========================================================================="
 
-find /plone -name "*eea.plonebuildout.profile*.zcml" | xargs rm -vf
 rm -vrf /var/lib/apt/lists/*
 rm -vrf /plone/buildout-cache/downloads/*
+find /plone -name *eea.plonebuildout.profile* -exec rm -vrf {} \;
 
 echo "========================================================================="
 echo "Fixing permissions..."
