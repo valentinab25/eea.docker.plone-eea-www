@@ -1,5 +1,5 @@
-FROM eeacms/kgs
-MAINTAINER "Alin Voinea" <alin.voinea@eaudeweb.ro>
+FROM eeacms/kgs:6.3
+MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
 ENV portal_url=http://www.eea.europa.eu \
     AOA_MAP_TILES=http://aoa.ew.eea.europa.eu/maptiles/ \
