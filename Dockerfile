@@ -1,4 +1,4 @@
-FROM eeacms/kgs:6.6
+FROM eeacms/kgs:6.7
 MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
 ENV portal_url=http://www.eea.europa.eu \

@@ -1,4 +1,4 @@
-# EEA Plone WWW Docker Image based on EEA KGS 
+# EEA Plone WWW Docker Image based on EEA KGS
 
 Docker Plone Image used for EEA website. See more at [eea.docker.www](https://github.com/eea/eea.docker.www)
 
@@ -16,7 +16,7 @@ Update `FROM eeacms/kgs:X.Y` base image within `Dockerfile`
 
 Commit changes
 
-    $ git commit -a "Release 19.5"
+    $ git commit -am "Release 19.5"
 
 Create tag
 
