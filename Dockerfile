@@ -1,4 +1,4 @@
-FROM eeacms/kgs
+FROM eeacms/kgs:7.2
 MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
 ENV portal_url=http://www.eea.europa.eu \
@@ -12,7 +12,7 @@ ENV portal_url=http://www.eea.europa.eu \
     TRACEVIEW_TRACING_MODE=always \
     WARMUP_BIN=/plone/instance/bin/warmup \
     WARMUP_INI=/plone/instance/warmup.ini \
-    WARMUP_HEALTH_THRESHOLD=100000
+    WARMUP_HEALTH_THRESHOLD=50000
 
 COPY docker-setup.sh /
 COPY src/* /plone/instance/
