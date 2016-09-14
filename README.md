@@ -10,7 +10,7 @@ Get source code
 
 Update `FROM eeacms/kgs:X.Y` base image within `Dockerfile`
 
-    $ cd eea.docker.kgs
+    $ cd eea.docker.plone-eea-www
     $ vim Dockerfile
     FROM eeacms/kgs:19.5
 
