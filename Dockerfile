@@ -20,5 +20,3 @@ COPY src/* /plone/instance/
 USER root
 RUN /docker-setup.sh
 USER plone
-
-VOLUME /data/www-static-resources /data/eea.controlpanel
