@@ -1,12 +1,7 @@
 FROM eeacms/www
-MAINTAINER "Alin Voinea" <alin.voinea@eaudeweb.ro>
+MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
-USER root
-RUN apt-get update \
- && apt-get install -y --no-install-recommends build-essential \
- && mv devel.cfg base-devel.cfg
-
+RUN mv devel.cfg base-devel.cfg
+COPY docker-setup.sh /
 COPY devel.cfg /plone/instance/
-USER plone
-
-RUN buildout -c devel.cfg
+RUN /docker-setup.sh
