@@ -2,7 +2,6 @@ FROM eeacms/kgs
 MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
 ENV portal_url=http://www.eea.europa.eu \
-    GOSU_VERSION=1.7 \
     AOA_MAP_TILES=http://aoa.ew.eea.europa.eu/maptiles/ \
     AOA_PORTAL_URL=http://aoa.ew.eea.europa.eu/ \
     EEALOGINAGENT_LOG=/data/eea.controlpanel \
