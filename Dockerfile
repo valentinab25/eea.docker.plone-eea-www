@@ -22,7 +22,6 @@ ENV portal_url=http://www.eea.europa.eu \
 
 USER root
 COPY src/* /plone/instance/
-RUN mv /docker-entrypoint.sh /plone-entrypoint.sh
 COPY docker-setup.sh traceview-setup.sh docker-entrypoint.sh /
 RUN /docker-setup.sh \
  && /traceview-setup.sh

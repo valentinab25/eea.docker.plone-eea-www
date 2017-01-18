@@ -1,8 +1,11 @@
 #!/bin/bash
 
+mkdir -vp /data/www-static-resources /data/eea.controlpanel
+chown -vR plone:plone /data/www-static-resources /data/eea.controlpanel
+
 if [ ! -z "$TRACEVIEW" ]; then
     /usr/sbin/traceview-config $TRACEVIEW
     /etc/init.d/tracelyzer start
 fi
 
-exec gosu plone /plone-entrypoint.sh "$@"
+exec /kgs-entrypoint.sh "$@"
