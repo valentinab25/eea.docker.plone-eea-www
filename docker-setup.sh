@@ -6,7 +6,23 @@ buildDeps="
   build-essential
   libldap2-dev
   libsasl2-dev
+  liboboe-dev
 "
+
+runDeps="
+  liboboe0
+"
+
+apt-get update
+apt-get install -y --no-install-recommends apt-transport-https
+
+echo "========================================================================="
+echo "AppNeta TraceView..."
+echo "========================================================================="
+
+echo "tracelyzer.access_key=$TRACEVIEW" > /etc/tracelytics.conf
+echo "deb https://apt.tv.solarwinds.com/$TRACEVIEW jessie main" > /etc/apt/sources.list.d/appneta.list
+curl https://apt.tv.solarwinds.com/appneta-apt-key.pub | apt-key add -
 
 echo "========================================================================="
 echo "Installing $buildDeps"
@@ -14,6 +30,12 @@ echo "========================================================================="
 
 apt-get update
 apt-get install -y --no-install-recommends $buildDeps
+
+echo "========================================================================="
+echo "Installing $runDeps"
+echo "========================================================================="
+
+apt-get install -y --no-install-recommends $runDeps
 
 echo "========================================================================="
 echo "Running buildout -c buildout.cfg"
@@ -28,10 +50,9 @@ echo "========================================================================="
 apt-get purge -y --auto-remove $buildDeps
 
 echo "========================================================================="
-echo "Cleaning up cache..."
+echo "Cleaning up Plone cache..."
 echo "========================================================================="
 
-rm -vrf /var/lib/apt/lists/*
 rm -vrf /plone/buildout-cache/downloads/*
 
 echo "========================================================================="
