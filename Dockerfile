@@ -1,6 +1,4 @@
 FROM eeacms/kgs
-MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
-
 ENV portal_url=https://www.eea.europa.eu \
     AOA_MAP_TILES=http://aoa.ew.eea.europa.eu/maptiles/ \
     AOA_PORTAL_URL=http://aoa.ew.eea.europa.eu/ \
@@ -19,8 +17,6 @@ ENV portal_url=https://www.eea.europa.eu \
     WARMUP_INI=/plone/instance/warmup.ini \
     WARMUP_HEALTH_THRESHOLD=50000
 
-USER root
 COPY src/* /plone/instance/
 COPY docker-setup.sh traceview-setup.sh docker-entrypoint.sh /
-RUN /docker-setup.sh \
- && /traceview-setup.sh
+RUN /docker-setup.sh && /traceview-setup.sh
