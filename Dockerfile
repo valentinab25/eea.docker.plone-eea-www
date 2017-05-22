@@ -15,7 +15,7 @@ ENV portal_url=https://www.eea.europa.eu \
     TRACEVIEW_TRACING_MODE=always \
     WARMUP_BIN=/plone/instance/bin/warmup \
     WARMUP_INI=/plone/instance/warmup.ini \
-    WARMUP_HEALTH_THRESHOLD=50000
+    WARMUP_HEALTH_THRESHOLD=50000 \
     EDW_LOGGER_PUBLISHER=false
 
 COPY src/* /plone/instance/
