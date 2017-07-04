@@ -32,15 +32,6 @@ Create tag
 
     $ git tag 19.5
 
-Back to dev
-
-    $ vim Dockerfile
-    FROM eeacms/kgs
-
-Commit changes
-
-    $ git commit -am "Back to dev"
-
 Push changes
 
     $ git push --tags
