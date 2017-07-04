@@ -61,3 +61,10 @@ echo "========================================================================="
 
 mkdir -p /data/www-static-resources /data/eea.controlpanel
 chown -R plone:plone /plone /data
+
+echo "========================================================================="
+echo "Backward compatibility..."
+echo "========================================================================="
+
+ln -vs /data /var/sharedblobstorage
+ln -vs /data/www-static-resources /var/www-static-resources
