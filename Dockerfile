@@ -16,7 +16,8 @@ ENV portal_url=https://www.eea.europa.eu \
     WARMUP_BIN=/plone/instance/bin/warmup \
     WARMUP_INI=/plone/instance/warmup.ini \
     WARMUP_HEALTH_THRESHOLD=50000 \
-    EDW_LOGGER_PUBLISHER=false
+    EDW_LOGGER_PUBLISHER=false \
+    RELSTORAGE_KEEP_HISTORY=false
 
 COPY src/* /plone/instance/
 COPY docker-setup.sh traceview-setup.sh docker-entrypoint.sh /
