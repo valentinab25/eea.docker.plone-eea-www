@@ -22,7 +22,7 @@ import sys
 
 SOURCES = 'https://raw.githubusercontent.com/eea/eea.plonebuildout.core/master/buildout-configs/sources.cfg'
 
-def pullVersions(versionsFile):
+def pullVersions(versionsFile, verbose=False):
     #from ordereddict import OrderedDict
     from collections import OrderedDict
     packageVersions = OrderedDict()
@@ -38,7 +38,7 @@ def pullVersions(versionsFile):
                 packageVersions[package] = version
     return packageVersions
 
-def pullSources(sourcesFile):
+def pullSources(sourcesFile, verbose=False):
     sources = {}
     for line in sourcesFile:
 
@@ -57,13 +57,16 @@ def pullSources(sourcesFile):
                     location = location[:-4]
                 sources[package] = location
             except ValueError:
-                print "ERROR pulling SOURCE location from line:"
-                print line
+                if verbose:
+                    print "ERROR pulling SOURCE location from line:"
+                    print line
+
     return sources
 
-def main(argv):
+def main():
     priorVersionsFileURL = sys.argv[1]
     currentVersionsFileURL = sys.argv[2]
+    verbose = sys.argv[3] if len(sys.argv) > 3 else False
 
     priorVersionsFile = urllib2.urlopen(priorVersionsFileURL)
     priorVersions = pullVersions(priorVersionsFile)
@@ -82,20 +85,23 @@ def main(argv):
             try:
                 newer_version = version > priorVersion
             except AttributeError:
-                print "AttributeError comparing version"
+                if verbose:
+                    print "AttributeError comparing version"
                 newer_version = False
 
             if newer_version:
 
                 packageChange = u"%s: %s %s %s" % (package, priorVersion, u"\u2192", version)
                 outputStr += u"\n" + packageChange + u"\n" + u"-"*len(packageChange) + "\n"
-                print "\n"
-                print packageChange.encode('utf-8')
-                print "========================================"
+                if verbose:
+                    print "\n"
+                    print packageChange.encode('utf-8')
+                    print "========================================"
                 if package in sources:
                     source = sources[package]
-                    print "Looking for CHANGES.txt/HISTORY.txt in source:"
-                    print source
+                    if verbose:
+                        print "Looking for CHANGES.txt/HISTORY.txt in source:"
+                        print source
                     for structure in ["CHANGES.txt",
                                       "HISTORY.txt",
                                       "docs/CHANGES.txt",
@@ -104,14 +110,17 @@ def main(argv):
                                       "raw/master/HISTORY.txt",
                                       "raw/master/docs/CHANGES.txt",
                                       "raw/master/docs/HISTORY.txt"]:
-                        print "%s/%s" % (source, structure)
+                        if verbose:
+                            print "%s/%s" % (source, structure)
 
                         try:
                             response = urllib2.urlopen("%s/%s" % (source, structure))
                         except urllib2.HTTPError, e:
-                            print e.code
+                            if verbose:
+                                print e.code
                         else:
-                            print "FOUND %s" % structure
+                            if verbose:
+                                print "FOUND %s" % structure
                             break
 
                     logtext = response.read()
@@ -122,7 +131,8 @@ def main(argv):
                             try:
                                 logVersion = StrictVersion(x['names'][0].split()[0])
                             except ValueError:
-                                print "NO section found"
+                                if verbose:
+                                    print "NO section found"
                                 pass
                             else:
                                 return logVersion > priorVersion and logVersion <= version
@@ -146,4 +156,4 @@ def main(argv):
     print outputStr.encode('utf-8')
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()

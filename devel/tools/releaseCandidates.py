@@ -11,6 +11,7 @@ def main(argv):
 
     packages = listdir('./src')
     packages.sort()
+    found = False
     for cand_d in packages:
 
         try:
@@ -24,9 +25,12 @@ def main(argv):
         for k in range(5):
             cand_s.readline()
         if cand_s.readline() != '\n':
+            found = True
             print 'Release candidate: %s' % cand_d
 
     print '==============================='
+    if found:
+        sys.exit(1)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
