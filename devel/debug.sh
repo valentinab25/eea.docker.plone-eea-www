@@ -3,7 +3,6 @@ set -e
 
 bin/develop rb
 
-
 if [ -z "$1" ]; then
   echo "============================================================="
   echo "All set. Now you can dive into container and start debugging:"
@@ -18,12 +17,16 @@ fi
 
 if [ "$1" == "tests" ]; then
  for i in $(ls src); do
-   if [ "$i" == "pdfdiff" ]; then
-     continue
+   if [ ! -z "$EXCLUDE" ]; then
+     if [ $EXCLUDE == *"$i"* ]; then
+       echo "============================================================="
+       echo "Skipping tests for: $i                                       "
+       continue
+     fi
    fi
 
    echo "============================================================="
-   echo "Running test for:                                            "
+   echo "Running tests for:                                           "
    echo "                                                             "
    echo "    $i                                                       "
    echo "                                                             "
