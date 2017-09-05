@@ -18,7 +18,7 @@ fi
 if [ "$1" == "tests" ]; then
  for i in $(ls src); do
    if [ ! -z "$EXCLUDE" ]; then
-     if [ $EXCLUDE == *"$i"* ]; then
+     if [[ $EXCLUDE == *"$i"* ]]; then
        echo "============================================================="
        echo "Skipping tests for: $i                                       "
        continue
