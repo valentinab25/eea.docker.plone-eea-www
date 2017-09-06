@@ -5,6 +5,6 @@ RUN mv devel.cfg base-devel.cfg \
  && pip install docutils
 
 COPY docker-setup.sh /
-COPY devel.cfg debug.sh warmup.ini /plone/instance/
+COPY devel.cfg warmup.ini /plone/instance/
 COPY tools/* /plone/instance/tools/
 RUN /docker-setup.sh
