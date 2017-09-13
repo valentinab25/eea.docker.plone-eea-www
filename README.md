@@ -1,5 +1,7 @@
 # EEA Plone WWW Docker Image based on EEA KGS
 
+[![Build Status](http://ci.eionet.europa.eu/job/eea/job/eea.docker.plone-eea-www/job/master/badge/icon)](http://ci.eionet.europa.eu/job/eea/job/eea.docker.plone-eea-www/job/master/display/redirect)
+
 Docker Plone Image used for EEA website. See more at [eea.docker.www](https://github.com/eea/eea.docker.www)
 
 ## Supported environment variables
