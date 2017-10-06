@@ -1,10 +1,6 @@
 pipeline {
   agent any
 
-  environment {
-    EXCLUDE = 'sparql-client Products.ZSPARQLMethod'
-  }
-
   stages {
     stage('Tests') {
       steps {
@@ -22,7 +18,7 @@ docker pull eeacms/www-devel'''
 
           sh '''
 echo "INFO: Running tests"
-docker run -i --net=host --name="$BUILD_TAG" -e EXCLUDE="$EXCLUDE" eeacms/www-devel /debug.sh tests'''
+docker run -i --net=host --name="$BUILD_TAG" eeacms/www-devel /debug.sh tests'''
 
           sh '''
 echo "INFO: Cleanning up"
