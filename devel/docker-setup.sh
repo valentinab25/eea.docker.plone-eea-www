@@ -25,6 +25,13 @@ rm -vrf /var/lib/apt/lists/*
 rm -vrf /plone/buildout-cache/downloads/*
 
 echo "========================================================================="
+echo "mkrelease..."
+echo "========================================================================="
+
+ln -s /plone/instance/bin/mkrelease /usr/local/bin/mkrelease
+ln -s /plone/instance/tools/mkrelease-pypi /usr/local/bin/mkrelease-pypi
+
+echo "========================================================================="
 echo "Fixing permissions..."
 echo "========================================================================="
 

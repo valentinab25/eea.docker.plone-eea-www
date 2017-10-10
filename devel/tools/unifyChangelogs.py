@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/plone/instance/bin/zopepy
 # -*- coding: ascii -*-
 ####################################
 # Modified version of
