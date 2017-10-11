@@ -2,6 +2,7 @@ FROM eeacms/kgs
 ENV portal_url=https://www.eea.europa.eu \
     AOA_MAP_TILES=http://aoa.ew.eea.europa.eu/maptiles/ \
     AOA_PORTAL_URL=http://aoa.ew.eea.europa.eu/ \
+    SENTRY_DSN=https://8c9dd62711a841c8935c4d49ca78865a@sentry.io/228226 \
     EEALOGINAGENT_LOG=/data/eea.controlpanel \
     EEACPBINSTANCESAGENT_LOG=/data/eea.controlpanel \
     RABBITMQ_HOST=rabbitmq \
@@ -9,7 +10,6 @@ ENV portal_url=https://www.eea.europa.eu \
     RABBITMQ_USER=guest \
     RABBITMQ_PASS=guest \
     saved_resources=/data/www-static-resources \
-    SENTRY_DSN= https://8c9dd62711a841c8935c4d49ca78865a@sentry.io/228226 \
     zope_i18n_compile_mo_files=true \
     TRACEVIEW_SAMPLE_RATE=1.0 \
     TRACEVIEW_DETAILED_PARTITION=1 \
