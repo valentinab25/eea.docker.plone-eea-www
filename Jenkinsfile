@@ -2,28 +2,22 @@ pipeline {
   agent any
 
   stages {
-    stage('Tests') {
+    stage('Build & Test') {
       steps {
         node(label: 'docker-1.13') {
-
-          sh '''
-echo "WARNING: Building eeacms/www is disabled due to Docker-in-Docker instability Pulling image from DockerHub"
-echo "docker build -t eeacms/www ."
-docker pull eeacms/www'''
-
-          sh '''
-echo "WARNING: Building eeacms/www-devel is disabled due to Docker-in-Docker instability. Pulling image from DockerHub"
-echo "docker build -t eeacms/www-devel devel"
-docker pull eeacms/www-devel'''
-
-          sh '''
-echo "INFO: Running tests"
-docker run -i --net=host --name="$BUILD_TAG" eeacms/www-devel /debug.sh tests'''
-
-          sh '''
-echo "INFO: Cleanning up"
-docker rm -v $BUILD_TAG'''
-
+          script {
+            try {
+              checkout scm
+              sh '''docker build -t ${BUILD_TAG} .'''
+              sh '''sed -i "s|eeacms/www|${BUILD_TAG}|g" devel/Dockerfile'''
+              sh '''docker build -t ${BUILD_TAG}-devel devel'''
+              sh '''docker run -i --net=host --name="${BUILD_TAG}" ${BUILD_TAG}-devel /debug.sh tests'''
+            } finally {
+              sh '''docker rm -v ${BUILD_TAG}'''
+              sh '''docker rmi ${BUILD_TAG}-devel'''
+              sh '''docker rmi ${BUILD_TAG}'''
+            }
+          }
         }
       }
     }
