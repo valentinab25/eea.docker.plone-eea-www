@@ -20,6 +20,7 @@ from docutils.core import publish_doctree
 import sys
 
 SOURCES = 'https://raw.githubusercontent.com/eea/eea.plonebuildout.core/master/buildout-configs/sources.cfg'
+VERSION = "https://raw.githubusercontent.com/eea/eea.plonebuildout.core/master/buildout-configs/kgs/{version}/versions.cfg"
 
 def pullVersions(url):
     """ Compute versions
@@ -65,8 +66,19 @@ def main():
     if len(sys.argv) != 3:
         raise RuntimeError(__doc__)
 
-    before = sys.argv[1]
-    after = sys.argv[2]
+    try:
+        before = StrictVersion(sys.argv[1])
+    except ValueError:
+        before = sys.argv[1]
+    else:
+        before = VERSION.format(version=before)
+
+    try:
+        after = StrictVersion(sys.argv[2])
+    except ValueError:
+        after = sys.argv[2]
+    else:
+        after = VERSION.format(version=after)
 
     before = pullVersions(before)
     after = pullVersions(after)
