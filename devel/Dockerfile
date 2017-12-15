@@ -1,6 +1,5 @@
 FROM eeacms/www
 
 COPY docker-setup.sh /
-COPY versions.cfg warmup.ini /plone/instance/
-COPY tools/* /plone/instance/tools/
+COPY warmup.ini /plone/instance/
 RUN /docker-setup.sh
