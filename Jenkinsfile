@@ -11,7 +11,7 @@ pipeline {
               sh '''docker build -t ${BUILD_TAG} .'''
               sh '''sed -i "s|eeacms/www|${BUILD_TAG}|g" devel/Dockerfile'''
               sh '''docker build -t ${BUILD_TAG}-devel devel'''
-              sh '''docker run -i --net=host --name="${BUILD_TAG}" ${BUILD_TAG}-devel /debug.sh tests'''
+              sh '''docker run -i --name="${BUILD_TAG}" -e GIT_BRANCH="${TARGET_BRANCH}" ${BUILD_TAG}-devel /debug.sh tests'''
             } finally {
               sh '''docker rm -v ${BUILD_TAG}'''
               sh '''docker rmi ${BUILD_TAG}-devel'''
