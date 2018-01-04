@@ -3,8 +3,7 @@ pipeline {
 
  environment {
      GIT_ORG = "valentinab25"
-     GIT_NAME = "eea.docker.kgs"
-     EXCLUDE = 'eea.google'
+     GIT_NAME = "eea.docker.plone-eea-www"
   }
 
   stages {
