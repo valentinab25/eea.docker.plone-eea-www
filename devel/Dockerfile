@@ -1,4 +1,4 @@
-FROM valentinab25/www
+FROM :17.12.22
 
 COPY docker-setup.sh /
 COPY warmup.ini /plone/instance/
